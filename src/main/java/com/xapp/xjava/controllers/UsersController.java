@@ -40,4 +40,11 @@ public class UsersController {
         return ResponseEntity.ok(user);
     }
 
+    // @GetMapping("/{userName}")
+    // ResponseEntity<Optional<UserEntity>> getUser(@PathVariable("userName") String
+    // userName) {
+    // Optional<UserEntity> user = usersService.getUser(userName);
+    // return ResponseEntity.ok(user);
+    // }
+
 }

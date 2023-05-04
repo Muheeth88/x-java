@@ -40,4 +40,9 @@ public class UsersService {
         return user;
     }
 
+    // public Optional<UserEntity> getUser(String userName) {
+    // Optional<UserEntity> user = usersRepository.findByUserName(userName);
+    // return user;
+    // }
+
 }
