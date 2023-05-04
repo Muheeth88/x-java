@@ -1,7 +1,10 @@
 package com.xapp.xjava.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +24,11 @@ public class TaskController {
     ResponseEntity<Task> createTask(@RequestBody Task req) {
         Task savedTask = taskService.createTask(req);
         return ResponseEntity.ok(savedTask);
+    }
+
+    @GetMapping("")
+    ResponseEntity<List<Task>> getAllTasks() {
+        List<Task> allTasks = taskService.getAllTasks();
+        return ResponseEntity.ok(allTasks);
     }
 }

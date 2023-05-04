@@ -1,5 +1,7 @@
 package com.xapp.xjava.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,10 @@ public class TaskService {
         newTask.setTitle(req.getTitle());
         newTask.setDescription(req.getDescription());
         return taskRepository.save(newTask);
+    }
+
+    public List<Task> getAllTasks() {
+        List<Task> tasks = taskRepository.findAll();
+        return tasks;
     }
 }
