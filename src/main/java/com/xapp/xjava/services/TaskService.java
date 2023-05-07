@@ -14,10 +14,10 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public Task createTask(Task req) {
-        Task newTask = new Task();
-        newTask.setTitle(req.getTitle());
-        newTask.setDescription(req.getDescription());
+    public Task createTask(Task newTask) {
+        // Task newTask = new Task();
+        // newTask.setTitle(req.getTitle());
+        // newTask.setDescription(req.getDescription());
         return taskRepository.save(newTask);
     }
 

@@ -16,16 +16,9 @@ public class UsersService {
     private UsersRepository usersRepository;
 
     // ------------- create user
-    public UserEntity createUser(UserEntity req) {
-
-        UserEntity newUser = new UserEntity();
-        newUser.setUserName(req.getUserName());
-        newUser.setEmail(req.getEmail());
-        newUser.setRole(req.getRole());
-        newUser.setPassword(req.getPassword());
-        newUser.setDateOfBirth(req.getDateOfBirth());
-
-        return usersRepository.save(newUser);
+    public UserEntity createUser(UserEntity user) {
+        UserEntity newUser = usersRepository.save(user);
+        return newUser;
     }
 
     // ----------------- get all users
@@ -37,12 +30,30 @@ public class UsersService {
     // ----------------- get user
     public Optional<UserEntity> getUser(Long userId) {
         Optional<UserEntity> user = usersRepository.findById(userId);
+        // UserEntity user = usersRepository.findByUserId();
         return user;
     }
 
-    // public Optional<UserEntity> getUser(String userName) {
-    // Optional<UserEntity> user = usersRepository.findByUserName(userName);
-    // return user;
-    // }
+    public Optional<UserEntity> getUser(String userName) {
+        Optional<UserEntity> user = usersRepository.findByUserName(userName);
+        return user;
+    }
 
+    public UserEntity editUser(Long userId, UserEntity user) {
+        Optional<UserEntity> currentUserOp = getUser(userId);
+        if (currentUserOp.isPresent()) {
+            UserEntity currentUser = currentUserOp.get();
+            currentUser.setUserName(user.getUserName());
+            currentUser.setDateOfBirth(user.getDateOfBirth());
+            currentUser.setEmail(user.getEmail());
+            currentUser.setPassword(user.getPassword());
+            currentUser.setRole(user.getRole());
+
+            UserEntity modifiedUser = createUser(currentUser);
+            return modifiedUser;
+        }
+
+        return null;
+
+    }
 }
