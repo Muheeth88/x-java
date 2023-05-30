@@ -3,6 +3,7 @@ package com.xapp.xjava.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,9 @@ public class User {
     private String password;
     private String role;
 
+    @ElementCollection
     private List<Movie> watchList;
+    @ElementCollection
     private List<Movie> likes;
 
 }
