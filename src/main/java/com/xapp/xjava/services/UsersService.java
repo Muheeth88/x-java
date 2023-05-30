@@ -34,11 +34,16 @@ public class UsersService {
         return user;
     }
 
-    public Optional<User> getUser(String userName) {
-        Optional<User> user = usersRepository.findByUserName(userName);
+    // public Optional<User> getUser(String userName) {
+    //     Optional<User> user = usersRepository.findByUserName(userName);
+    //     return user;
+    // }
+
+    public User getUser(String email) {
+        User user = usersRepository.findByEmail(email);
         return user;
     }
-
+    
     public User editUser(Long userId, User user) {
         Optional<User> currentUserOp = getUser(userId);
         if (currentUserOp.isPresent()) {
