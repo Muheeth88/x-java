@@ -1,6 +1,7 @@
 package com.xapp.xjava.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,5 +26,8 @@ public class User {
     private Date dateOfBirth;
     private String password;
     private String role;
+
+    private List<Movie> watchList;
+    private List<Movie> likes;
 
 }
