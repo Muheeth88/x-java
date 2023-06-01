@@ -1,6 +1,7 @@
 package com.xapp.xjava.config;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,17 +16,14 @@ public class CustomUserDetails implements UserDetails {
     private User user;
 
     public CustomUserDetails(User user) {
+        super();
         this.user = user;
     }
 
-    // public CustomUserDetails(Optional<User> user) {
-    //     this.user = user;
-    // }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-      SimpleGrantedAuthority simpleGrantedAuthority =  new SimpleGrantedAuthority(user.getRole());
-      return List.of(simpleGrantedAuthority);
+   
+        return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
     }
 
     @Override

@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.xapp.xjava.entities.User;
 import com.xapp.xjava.repositories.UsersRepository;
 
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -22,8 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
        if(user == null) {
         throw new UsernameNotFoundException("User Not Found!");
        }
-        CustomUserDetails customUserDetails = new CustomUserDetails(user);
-        return customUserDetails;
+       
+        return new CustomUserDetails(user);
     }
 
 }
